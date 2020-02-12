@@ -1,13 +1,10 @@
 package com.alfonsotienda.holaspring.controller;
 
-import java.util.ArrayList;
-
 import com.alfonsotienda.holaspring.model.Clientes;
 import com.alfonsotienda.holaspring.model.ClientesRepository;
 import com.alfonsotienda.holaspring.model.Factura;
 import com.alfonsotienda.holaspring.model.FacturaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -17,8 +14,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-
-import antlr.collections.List;
 
 /**
  * MainController
