@@ -1,10 +1,13 @@
 package com.alfonsotienda.holaspring.controller;
 
+import java.util.ArrayList;
+
 import com.alfonsotienda.holaspring.model.Clientes;
 import com.alfonsotienda.holaspring.model.ClientesRepository;
 import com.alfonsotienda.holaspring.model.Factura;
 import com.alfonsotienda.holaspring.model.FacturaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -14,6 +17,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
+import antlr.collections.List;
 
 /**
  * MainController
@@ -50,13 +55,13 @@ public class MainController {
 
 
         @Autowired
-        ClientesRepository clientesRepository; //FacturaRepository maneja los datos de la bd
+        ClientesRepository clientesRepository; //ClienteRepository maneja los datos de la bd
     
         @GetMapping("/creaclientes") 
         @ResponseBody
         public ResponseEntity<String> creaclientes(
             @RequestParam("nombre") String nombre, 
-            @RequestParam("id") Long id, 
+            @RequestParam(value="id", required = false) Integer id, 
             @RequestParam("apellidos") String apellidos,
             @RequestParam("edad") Integer edad) 
             {
@@ -186,8 +191,7 @@ public class MainController {
 
     @PostMapping("/test")
     @ResponseBody
-
-    public ModelAndView testloculraHTMLPost(@RequestParam("respuesta1") String respuesta1,
+    public ModelAndView testlocuraHTMLPost(@RequestParam("respuesta1") String respuesta1,
             @RequestParam("respuesta2") String respuesta2, @RequestParam("respuesta3") String respuesta3,
             @RequestParam("respuesta4") String respuesta4, @RequestParam("respuesta5") String respuesta5) {
 
@@ -276,4 +280,19 @@ public class MainController {
         }
 
     }
+
+/**
+ * clientesRepository.findAll() mirar los demás después del punto
+ * Devuelve Iterable<T> y findAll() Returns all instances of the type.
+ */
+    @GetMapping("/listado")
+    public ModelAndView listadoClientes() {
+    ModelAndView modelAndView = new ModelAndView("listado"); 
+    Iterable<Clientes> cli = clientesRepository.findAll();
+    modelAndView.addObject("mensaje", cli);
+    return modelAndView; 
+    }
+
+
+
 }

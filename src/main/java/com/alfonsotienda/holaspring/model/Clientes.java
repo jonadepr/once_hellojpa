@@ -27,13 +27,13 @@ public class Clientes {
     @Id
     @NotNull
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private int id;
 
     @NotNull
     @Size(min=3, max=20)
     private String nombre;
 
-    @Size(min=10, max=100)
+    @Size(min=3, max=100)
     private String apellidos;
 
     @NotNull
@@ -41,11 +41,11 @@ public class Clientes {
     @Min(18)
     private int edad;
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -73,7 +73,9 @@ public class Clientes {
         this.edad = edad;
     }
 
-    
-
+    @Override
+    public String toString(){
+        return "id: "+id+", nombre: "+nombre+", apellidos: "+apellidos+", edad: "+edad;
+    }
 
 }
