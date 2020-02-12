@@ -1,9 +1,9 @@
 package com.alfonsotienda.holaspring.controller;
 
-import javax.persistence.EntityManager;
+import com.alfonsotienda.holaspring.model.Clientes;
+import com.alfonsotienda.holaspring.model.ClientesRepository;
 import com.alfonsotienda.holaspring.model.Factura;
 import com.alfonsotienda.holaspring.model.FacturaRepository;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -33,7 +33,7 @@ public class MainController {
 
     @GetMapping("/creafactura")
     @ResponseBody
-    public ResponseEntity creafactura(
+    public ResponseEntity<String> creafactura(
         @RequestParam("fecha") String fecha, 
         @RequestParam("id") Integer id, 
         @RequestParam("total") Double total) 
@@ -43,10 +43,33 @@ public class MainController {
             factura.setId(id);
             factura.setTotal(total);
             facturaRepository.save(factura);
-            ResponseEntity responseEntity =
-            new ResponseEntity<>(HttpStatus.CREATED);
+            ResponseEntity<String> responseEntity =
+            new ResponseEntity<String>(HttpStatus.CREATED);
             return responseEntity;
         }
+
+
+        @Autowired
+        ClientesRepository clientesRepository; //FacturaRepository maneja los datos de la bd
+    
+        @GetMapping("/creaclientes")
+        @ResponseBody
+        public ResponseEntity<String> creaclientes(
+            @RequestParam("nombre") String nombre, 
+            @RequestParam("id") Long id, 
+            @RequestParam("apellidos") String apellidos,
+            @RequestParam("edad") Integer edad) 
+            {
+                Clientes cliente = new Clientes();
+                cliente.setNombre(nombre);
+                cliente.setId(id);
+                cliente.setApellidos(apellidos);
+                cliente.setEdad(edad);
+                clientesRepository.save(cliente);
+                ResponseEntity<String> responseEntity =
+                new ResponseEntity<String>(HttpStatus.CREATED);
+                return responseEntity;
+            }
 
     @GetMapping("/ingles")
     @ResponseBody

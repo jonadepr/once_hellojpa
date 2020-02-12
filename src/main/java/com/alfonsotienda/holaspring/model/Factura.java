@@ -7,6 +7,13 @@ import javax.persistence.Id;
  * Factura
  * POJO: Plain Old Java Object
  * Entity es para generar la entidad en base de datos en base al objeto
+ * 
+ * Usar las  siguientes anotaciones para clientes 
+ * @GeneratedValue es para el autoincremental (buscar)
+ * Otra es @NotNull
+ * Otra es @Max o @Min
+ * Otra es @Size
+ * 
  */
 
 @Entity
