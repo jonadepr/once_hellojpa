@@ -52,7 +52,7 @@ public class MainController {
         @Autowired
         ClientesRepository clientesRepository; //FacturaRepository maneja los datos de la bd
     
-        @GetMapping("/creaclientes")
+        @GetMapping("/creaclientes") 
         @ResponseBody
         public ResponseEntity<String> creaclientes(
             @RequestParam("nombre") String nombre, 
