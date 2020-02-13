@@ -282,10 +282,10 @@ public class MainController {
  */
     @GetMapping("/listado")
     public ModelAndView listadoClientes() {
-    ModelAndView modelAndView = new ModelAndView("listado"); 
-    Iterable<Clientes> cli = clientesRepository.findAll();
-    modelAndView.addObject("mensaje", cli);
-    return modelAndView; 
+        ModelAndView modelAndView = new ModelAndView("listado"); 
+        Iterable<Clientes> cli = clientesRepository.findAll();
+        modelAndView.addObject("mensaje", cli);
+        return modelAndView; 
     }
 
 
