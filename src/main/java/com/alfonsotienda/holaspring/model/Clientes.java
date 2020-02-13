@@ -1,9 +1,11 @@
 package com.alfonsotienda.holaspring.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -22,6 +24,7 @@ import javax.validation.constraints.Size;
  * 
  */
 @Entity
+@Table(name = "clientes")
 public class Clientes {
 
     @Id // Pk no nula
@@ -31,9 +34,11 @@ public class Clientes {
 
     @NotNull
     @Size(min=3, max=20)
+    @Column(name = "nombre")
     private String nombre;
 
     @Size(min=3, max=100)
+    @Column(name = "apellidos")
     private String apellidos;
 
     @NotNull
