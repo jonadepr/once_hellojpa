@@ -1,30 +1,30 @@
 package com.alfonsotienda.holaspring.model;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
 
 /**
  * Factura
- * POJO: Plain Old Java Object
- * Entity es para generar la entidad en base de datos en base al objeto
- * 
- * Usar las  siguientes anotaciones para clientes 
- * @GeneratedValue es para el autoincremental (buscar)
- * Otra es @NotNull
- * Otra es @Max o @Min
- * Otra es @Size
- * 
  */
-
 @Entity
 public class Factura {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
     private String fecha;
 
     private Double total;
+
+
+    @ManyToOne
+    private Cliente cliente;
+
 
     public Integer getId() {
         return id;
@@ -49,4 +49,9 @@ public class Factura {
     public void setTotal(Double total) {
         this.total = total;
     }
+
+
+    
+
+
 }
