@@ -24,9 +24,9 @@ import javax.validation.constraints.Size;
 @Entity
 public class Clientes {
 
-    @Id
+    @Id // Pk no nula
     @NotNull
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO) // Autoincremental
     private int id;
 
     @NotNull
@@ -37,9 +37,21 @@ public class Clientes {
     private String apellidos;
 
     @NotNull
-    @Max(65)
-    @Min(18)
+    @Max(value = 65)
+    @Min(value = 18)
     private int edad;
+
+    public Clientes(){
+
+    }
+
+    public Clientes(@NotNull @Size(min = 3, max = 20) String nombre, @Size(min = 3, max = 100) String apellidos,
+    @NotNull @Max(65) @Min(18) int edad) {
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.edad = edad;
+    }
+
 
     public int getId() {
         return id;
@@ -77,5 +89,7 @@ public class Clientes {
     public String toString(){
         return "id: "+id+", nombre: "+nombre+", apellidos: "+apellidos+", edad: "+edad;
     }
+
+
 
 }
