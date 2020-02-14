@@ -4,11 +4,11 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 /**
- * LineaRepository
+ * ProductoRepository
  */
 @Repository
-public interface LineaRepository
-    extends CrudRepository<Linea, Integer>{
+public interface ProductoRepository
+    extends CrudRepository<Producto, Integer>{
 
     
 }

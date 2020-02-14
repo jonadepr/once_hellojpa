@@ -30,7 +30,7 @@ public class Factura {
     private Cliente cliente;
 
     @ManyToMany(cascade = CascadeType.ALL)
-    private List<Linea> lineas;
+    private List<Producto> productos;
 
     public Integer getId() {
         return id;

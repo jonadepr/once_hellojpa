@@ -11,24 +11,24 @@ import javax.validation.constraints.Size;
 
 
 /**
- * Linea
+ * Producto
  */
 @Entity
-public class Linea {
+public class Producto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    @Size(max=300)
+    @Size(max = 300)
     private String concepto;
 
     private Double precio;
 
-    @ManyToMany(mappedBy = "lineas")
+    @ManyToMany(mappedBy = "productos")
     private List<Factura> facturas;
 
-    public Linea(@Size(max = 300) String concepto, Double precio) {
+    public Producto(@Size(max = 300) String concepto, Double precio) {
         this.concepto = concepto;
         this.precio = precio;
     }
